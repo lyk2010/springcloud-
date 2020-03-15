@@ -2,6 +2,8 @@ package com.kevin.springcloud.controller;
 
 import com.kevin.springcloud.entities.CommonResult;
 import com.kevin.springcloud.entities.Payment;
+import com.kevin.springcloud.entities.ResultCode;
+import com.kevin.springcloud.entities.ResultUtil;
 import com.kevin.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +28,9 @@ public class PaymentController {
         log.info("===插入结果:"+result);
 
         if (result > 0){
-            return new CommonResult(200,"插入数据库成功！",result);
+            return new CommonResult(100,"成功",result);
         }else {
-            return new CommonResult(444,"插入数据库失败！",null);
+            return new CommonResult(200,"失败",null);
         }
     }
 
@@ -39,9 +41,9 @@ public class PaymentController {
         log.info("===根据ID查询结果:"+payment);
 
         if (payment != null){
-            return new CommonResult(200,"成功！",payment);
+            return new CommonResult(100,"成功",payment);
         }else {
-            return new CommonResult(444,"失败！没有对应记录，查询ID："+id,null);
+            return new CommonResult(200,"失败",null);
         }
     }
 
